@@ -29,6 +29,10 @@ cfg_if::cfg_if! {
         mod riscv64;
         pub(crate) use supported::*;
         pub(crate) use riscv64::*;
+    } else if #[cfg(all(target_arch = "riscv32", not(target_feature = "f")))] {
+        mod riscv32;
+        pub(crate) use supported::*;
+        pub(crate) use riscv32::*;
     } else {
         // No support for this platform. Don't fail compilation though and
         // instead defer the error to happen at runtime when a fiber is created.
