@@ -29,7 +29,7 @@ cfg_if::cfg_if! {
         mod riscv64;
         pub(crate) use supported::*;
         pub(crate) use riscv64::*;
-    } else if #[cfg(all(target_arch = "riscv32", not(target_feature = "f")))] {
+    } else if #[cfg(all(target_arch = "riscv32", not(target_feature = "f"), not(target_feature = "v")))] {
         mod riscv32;
         pub(crate) use supported::*;
         pub(crate) use riscv32::*;
